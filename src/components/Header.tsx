@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import { ClipboardIcon } from './ClipboardIcons';
 import { MarkdownIcon } from './MarkdownIcon';
 
 interface HeaderProps {
@@ -5,6 +7,8 @@ interface HeaderProps {
 }
 
 export function Header(props: HeaderProps) {
+  const [clipboardStatus, setClipboardStatus] = useState(false)
+
   function handleDownloadFile() {
     const blob = new Blob([props.value], { type: 'text/markdown' });
     const url = URL.createObjectURL(blob);
@@ -12,6 +16,15 @@ export function Header(props: HeaderProps) {
     link.download = "download.md";
     link.href = url;
     link.click();
+  }
+
+  function handleClipboardCopy() {
+    setClipboardStatus(true)
+    navigator.clipboard.writeText(props.value)
+
+    setTimeout(() => {
+      setClipboardStatus(false)
+    }, 3000)
   }
 
   return (
@@ -23,9 +36,28 @@ export function Header(props: HeaderProps) {
         <h1>Markdown Preview</h1>
       </div>
 
-      <button onClick={handleDownloadFile} disabled={props.value === ''}>
-        Download
-      </button>
+      <div className="options">
+        <button
+          onClick={handleClipboardCopy}
+          disabled={props.value === ''}
+          className="clipboard-button"
+          title="Copy to clipboard"
+        >
+          {clipboardStatus ? 'Copied' : 'Copy to Clipboard'}
+          <ClipboardIcon
+            color="#dedede"
+            statusClick={clipboardStatus}
+          />
+        </button>
+
+        <button
+          className="download-button"
+          onClick={handleDownloadFile}
+          disabled={props.value === ''}
+        >
+          Download
+        </button>
+      </div>
     </header>
   )
 }

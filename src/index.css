@@ -46,7 +46,18 @@ main {
 
 .markdown-body pre {
   overflow: unset !important;
+  padding: 0px !important;
 }
+
+.custom-syntax-highlighter {
+  margin: 0px !important;
+  border-radius: 6px !important;
+  background-color: #161b22 !important;
+}
+
+.custom-syntax-highlighter code {
+  font-family: "Fira Code", monospace !important;
+} 
 
 header {
   display: flex;
@@ -70,11 +81,16 @@ header .title svg {
   margin-right: 8px;
 }
 
-header h1 {
+header .title h1 {
   font-size: 1.5rem;
 }
 
-header button {
+header .options {
+  display: flex;
+  gap: 1rem;
+}
+
+header .options button {
   padding: 0.5rem 1.5rem;
   font-weight: bold;
   background-color: transparent;
@@ -88,6 +104,26 @@ header button {
   font-size: 14px;
 }
 
-header button:hover:enabled {
+header .options button:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+header .options .clipboard-button:hover:enabled {
   background-color: rgba(255, 255, 255, 0.1);
+}
+
+header .options .clipboard-button svg {
+  width: 20px;
+  height: 20px;
+  margin-left: 8px;
+}
+
+header .options .download-button {
+  background-color: #dedede;
+  color: #3c3c3c;
+}
+
+header .options .download-button:hover:enabled {
+  background-color: rgba(255, 255, 255, 0.7);
 }

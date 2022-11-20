@@ -11,5 +11,3 @@
 - **Download:** Option to download the markdown content as a `.md` file.
 - **Checklists:** Renders GitHub-style checklists.
 - **Search in page:** Search within your markdown text and scroll to the results. Just hit `Ctrl+F` or `Cmd+F` on macOS.
-
-# 

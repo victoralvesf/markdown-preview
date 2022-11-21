@@ -109,6 +109,10 @@ header .options button:disabled {
   pointer-events: none;
 }
 
+header .options .clipboard-button {
+  color: #dedede;
+}
+
 header .options .clipboard-button:hover:enabled {
   background-color: rgba(255, 255, 255, 0.1);
 }

@@ -49,6 +49,10 @@ main {
   padding: 0px !important;
 }
 
+.markdown-body table {
+  overflow: unset !important;
+}
+
 .custom-syntax-highlighter {
   margin: 0px !important;
   border-radius: 6px !important;
